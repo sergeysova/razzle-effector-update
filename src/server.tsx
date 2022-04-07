@@ -13,16 +13,16 @@ const syncLoadAssets = () => {
 };
 syncLoadAssets();
 
-const cssLinksFromAssets = (assets, entrypoint) => {
+const cssLinksFromAssets = (assets: any, entrypoint: any) => {
   return assets[entrypoint] ? assets[entrypoint].css ?
-  assets[entrypoint].css.map(asset=>
+  assets[entrypoint].css.map((asset: any)=>
     `<link rel="stylesheet" href="${asset}">`
   ).join('') : '' : '';
 };
 
-const jsScriptTagsFromAssets = (assets, entrypoint, extra = '') => {
+const jsScriptTagsFromAssets = (assets: any, entrypoint: any, extra = '') => {
   return assets[entrypoint] ? assets[entrypoint].js ?
-  assets[entrypoint].js.map(asset=>
+  assets[entrypoint].js.map((asset: any)=>
     `<script src="${asset}"${extra}></script>`
   ).join('') : '' : '';
 };
