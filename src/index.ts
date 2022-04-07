@@ -1,23 +1,39 @@
-import express from 'express';
+import 'dotenv/config';
+import type { FastifyInstance } from 'fastify';
+import type { Server } from 'http';
 
-let app = require('./server').default;
+import * as app from './app/server'
+
+let server: FastifyInstance<Server> = app.fastifyInstance;
+
+process.on('unhandledRejection', (error: any) => {
+  console.error(
+    'unhandledRejection',
+    {
+      error: String(error),
+      message: error?.message,
+      stack: error?.stack,
+    },
+  );
+})
+const PORT = process.env.PORT ?? '3000'
+const HOST = process.env.HOST ?? '0.0.0.0';
+
+server.listen(PORT, HOST).catch(console.error);
+
 
 if (module.hot) {
-  module.hot.accept('./server', () => {
-    console.log('🔁  HMR Reloading `./server`...');
+  console.info('✅  Server-side HMR Enabled!');
+  module.hot.accept('./app/server', () => {
+    console.info('🔁  HMR Reloading `./app/server`...');
+
     try {
-      app = require('./server').default;
+      server.close(() => {
+        server = require('./app/server').fastifyInstance;
+        server.listen(PORT, HOST).catch(console.error);
+      });
     } catch (error) {
-      console.error(error);
+      console.error(error as any);
     }
   });
-  console.info('✅  Server-side HMR Enabled!');
 }
-
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-
-export default express()
-  .use((req, res) => app.handle(req, res))
-  .listen(port, () => {
-    console.log(`> App started http://localhost:${port}`)
-  });
