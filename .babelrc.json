@@ -1,7 +1,7 @@
 {
-  "presets": ["razzle"],
+  "presets": ["razzle", "patronum/babel-preset", "framework/babel-preset"],
   "plugins": [
     "@babel/plugin-proposal-export-namespace-from",
-    ["effector/babel-plugin", { "factories":  ["framework", "patronum"]}]
+    ["effector/babel-plugin"]
   ]
 }

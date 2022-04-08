@@ -4441,10 +4441,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framework@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/framework/-/framework-0.5.3.tgz#4c4e4ecb36da3543ff83e4025e9bd66a5ceca989"
-  integrity sha512-csK6yRj/v0bchxDQVvhViEhAKCgLe78ncdO+bZdKxQiPRSbDfn1sUKzmYKM/+DdR0HUfbKrM2AUkQNcR0yJ1Eg==
+framework@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/framework/-/framework-0.6.0.tgz#edf79ba5823ef8a965d05ca285763951f5823908"
+  integrity sha512-J1nqi70iWD3hpcF7X9tzSugL/YcRE+SiizMS6W+Ka72j1BPPcoMzqdeMOIIKaCbmFzzIB4JUfLF1Y+UuEYPudg==
   dependencies:
     "@loadable/component" "^5.15.0"
     debug "^4.3.2"

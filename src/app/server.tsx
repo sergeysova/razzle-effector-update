@@ -8,7 +8,7 @@ import fastifyStatic from 'fastify-static';
 import {RouteGenericInterface} from 'fastify/types/route';
 import {getHatch, HatchParams} from 'framework';
 
-import {splitMap} from 'patronum';
+import {splitMap} from 'patronum/split-map';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import {FilledContext, HelmetProvider} from 'react-helmet-async';
@@ -158,7 +158,6 @@ fastifyInstance.get('/*', async function handleRequest(req, res) {
   const storesValues = serialize(scope);
   const routerContext = {}
   const helmetContext = {} as FilledContext;
-  const basePath = PUBLIC_URL ?? `${req.protocol}://${req.hostname}`;
 
   res.header('Content-Type', 'text/html');
   const appContent = ReactDOMServer.renderToNodeStream(
