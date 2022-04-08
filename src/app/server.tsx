@@ -57,7 +57,7 @@ routeNotResolved.watch(({url}) => {
 // And replace `requestHandled` with `sessionLoaded`
 const readyToMatchRoute = sample({source: routeResolved})
 
-for (const {component, path, exact} of routes) {
+for (const {component, path} of routes) {
   if (!component) {
     console.warn(`No component found for path ${path}`)
     continue;
